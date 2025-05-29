@@ -12,9 +12,11 @@ Explorar o comportamento de diferentes tipos de threads (CPU-bound e I/O-bound) 
 - Iniciamos criando uma pasta no sistema chamada "docker-c-practice" e criando dentro um arquivo Dockerfile e outro chamando threads_cpu_io.c.
 - O arquivo threads_cpu_io.c utiliza dois conceitos utilizando threads: CPU-bound - tarefas intensas de processamento; e I/O-bound - tarefas com espera simulada (sleep).
 - Código do arquivo Dockerfile.
+
 ![Codigo Dockerfile](imagens/image7.png)
 
 - Código do arquivo threads_cpu_io.c.
+
 ![Código threads_cpu_io](imagens/image2.png)
 
 ## 2. Criar imagem
@@ -24,31 +26,40 @@ Explorar o comportamento de diferentes tipos de threads (CPU-bound e I/O-bound) 
 
 ## 3. Compilação e execução
 - Executei o meu container docker com fedora utilizando o comando "docker run -it --name escalonamento -v "${PWD}:/app" fedora-sistemas-operacionais fish".
+
 ![Imagem da etapa 3](imagens/image1.png)
 
 - Após isso compilei e executei meu arquivo "threads_cpu_io.c" no primeiro terminal que abri rodando o docker run.
+
 ![Imagem do código executado](imagens/image12.png)
 
 - Nesse terminal rodei o docker exec.
+
 ![Imagem do terminal](imagens/image11.png)
 
 - E nele executei o comando "top -H -p $(pgrep threads_cpu_io)".
+
 ![Imagem do terminal](imagens/image6.png)
   
 ## 4. Tarefa
 - Nessa etapa adicionei mais uma thread de cada tipo CPU-bound e I/O-bound.
+
 ![Imagem do código](imagens/image8.png)
   
 - E alterei o cálculo da CPU-bound para utilizar o cálculo de PI.
+
 ![Imagem do código](imagens/image10.png)
 
 - Fiz a instalação do utilitário "perf" para poder executar o comando posteriormente.
+
 ![Imagem do terminal](imagens/image4.png)
 
--Executando o comando "perf stat ./threads_cpu_io" para ver o tempo que rodou o arquivo após as modificações.
+- Executando o comando "perf stat ./threads_cpu_io" para ver o tempo que rodou o arquivo após as modificações.
+
 ![Imagem do terminal](imagens/image5.png) 
 
--Abaixo está o tempo anterior utilizando 2 threads e o antigo cálculo.
+- Abaixo está o tempo anterior utilizando 2 threads e o antigo cálculo.
+
 ![Imagem do terminal](imagens/image9.png)
 
 # Resultados Obtidos
